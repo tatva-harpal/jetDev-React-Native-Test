@@ -1,23 +1,19 @@
-import * as React from 'react';
-import {useRef} from 'react';
-import {useState} from 'react';
-import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import {Button} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+
 import CustomInput from '../../components/CustomInput';
 import {resetToScreen} from '../../navigation/rootAction';
-import {
-  deviceRelativeHeight,
-  deviceRelativeWidth,
-  EmailRegExp,
-  scaledSize,
-  showErrorMessage,
-} from '../../utils';
+import {deviceRelativeHeight, EmailRegExp, showErrorMessage} from '../../utils';
 import {colors} from '../../utils/theme';
+import {styles} from './styles';
 
 const LoginScreen = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const userNameRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const onPressLogin = () => {
     if (userName === 'reactnative@jetdevs.com' && password === 'jetdevs@123') {
@@ -28,9 +24,6 @@ const LoginScreen = () => {
       showErrorMessage('Mail id or password is wrong. Please try again!');
     }
   };
-
-  const userNameRef = useRef(null);
-  const passwordRef = useRef(null);
 
   return (
     <SafeAreaView style={styles.mainView}>
@@ -87,50 +80,5 @@ const LoginScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  mainView: {
-    backgroundColor: colors.background,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  popup: {
-    backgroundColor: colors.white,
-    marginHorizontal: deviceRelativeWidth(5),
-    marginVertical: deviceRelativeHeight(12.5),
-    height: deviceRelativeHeight(75),
-    width: deviceRelativeWidth(90),
-    alignSelf: 'center',
-    justifyContent: 'center',
-    zIndex: 99999,
-    padding: scaledSize(15),
-    paddingBottom: scaledSize(35),
-    borderRadius: scaledSize(10),
-  },
-  title: {
-    color: colors.textBlack,
-    fontSize: scaledSize(28),
-    alignSelf: 'center',
-    fontWeight: '600',
-  },
-  textFieldWrapper: {
-    marginVertical: scaledSize(40),
-  },
-  logoWrapper: {
-    position: 'absolute',
-    top: -35,
-    left: deviceRelativeWidth(35),
-  },
-  headerImage: {
-    width: scaledSize(70),
-    height: scaledSize(70),
-    resizeMode: 'contain',
-    overflow: 'hidden',
-    alignSelf: 'center',
-    backgroundColor: colors.white,
-    borderRadius: scaledSize(35),
-  },
-});
 
 export default LoginScreen;

@@ -1,22 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {TextField} from 'rn-material-ui-textfield';
 
 import {colors} from '../utils/theme';
 import {scaledSize} from '../utils';
-
-const styles = StyleSheet.create({
-  inputLabel: {
-    paddingTop: 3,
-    color: colors.white,
-  },
-  inputText: {
-    fontSize: scaledSize(14),
-  },
-  paddingEnd10: {paddingEnd: 10},
-});
 
 function CustomInput(props, ref) {
   const {
@@ -66,14 +54,14 @@ function CustomInput(props, ref) {
   const iconColor = ref?.current?.focused ? colors.primary : colors.gray;
   const renderLeftIcon = () => {
     return (
-      <TouchableOpacity activeOpacity={0.8} style={styles.paddingEnd10}>
+      <View style={styles.paddingEnd10}>
         <Icon
           color={iconColor}
           name={iconName}
           type={iconType}
           size={scaledSize(25)}
         />
-      </TouchableOpacity>
+      </View>
     );
   };
 
@@ -109,3 +97,14 @@ function CustomInput(props, ref) {
 }
 
 export default React.forwardRef(CustomInput);
+
+const styles = StyleSheet.create({
+  inputLabel: {
+    paddingTop: 3,
+    color: colors.white,
+  },
+  inputText: {
+    fontSize: scaledSize(14),
+  },
+  paddingEnd10: {paddingEnd: 10},
+});

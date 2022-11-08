@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {colors} from '../utils/theme';
 import {deviceRelativeHeight, scaledSize} from '../utils';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Header = () => {
   return (
@@ -17,6 +17,8 @@ const Header = () => {
     </SafeAreaView>
   );
 };
+
+export default Header;
 
 const styles = StyleSheet.create({
   headerView: {
@@ -33,4 +35,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
-export default Header;

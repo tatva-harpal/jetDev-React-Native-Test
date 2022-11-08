@@ -3,8 +3,8 @@ import {Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from 'react-native-elements/dist/icons/Icon';
 
-import HomeScreen from '../Screens/HomeScreen';
-import FavouriteScreen from '../Screens/FavouriteScreen';
+import HomeScreen from '../screens/HomeScreen';
+import FavouriteScreen from '../screens/FavouriteScreen';
 
 import {colors} from '../utils/theme';
 import {scaledSize} from '../utils';
@@ -60,36 +60,8 @@ const RootNavigator = () => {
         },
         headerShown: false,
       })}>
-      <Tab.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: () => (
-            <Text
-              style={{
-                color: colors.primary,
-                fontSize: scaledSize(11),
-              }}>
-              Home
-            </Text>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="FavouriteScreen"
-        component={FavouriteScreen}
-        options={{
-          tabBarLabel: () => (
-            <Text
-              style={{
-                color: colors.primary,
-                fontSize: scaledSize(11),
-              }}>
-              Favourite
-            </Text>
-          ),
-        }}
-      />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="FavouriteScreen" component={FavouriteScreen} />
     </Tab.Navigator>
   );
 };
