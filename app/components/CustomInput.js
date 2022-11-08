@@ -63,7 +63,6 @@ function CustomInput(props, ref) {
     ) : null;
   }, [secureTextEntry, passwordVisible]);
 
-  console.log(label, ref?.current?.focused);
   const iconColor = ref?.current?.focused ? colors.primary : colors.gray;
   const renderLeftIcon = () => {
     return (
